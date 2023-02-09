@@ -1,0 +1,33 @@
+<h4>Tabla angular material</h4>
+
+
+<table mat-table [dataSource]="dataSource"  >
+
+    <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef appDirectivaFuente>Student Name</th>
+        <td mat-cell *matCellDef="let element">{{element.alumnoInfo | formatoNombre: element.alumnoInfo.nombre : element.alumnoInfo.apellido }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="curso">
+        <th mat-header-cell *matHeaderCellDef appDirectivaFuente>Curse Name</th>
+        <td mat-cell *matCellDef="let element">{{element.curso}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="profesor">
+        <th mat-header-cell *matHeaderCellDef appDirectivaFuente>Teacher Name</th>
+        <td mat-cell *matCellDef="let element">{{element.profesor}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef appDirectivaFuente>Acciones</th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-button color="primary" (click)="abrirModal(element)">Edit</button>
+            <button mat-button color="warn" (click)="remove()">Remove</button>
+            <button mat-button color="primary" (click)="addStudent()">+</button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnas"></tr>
+
+</table>

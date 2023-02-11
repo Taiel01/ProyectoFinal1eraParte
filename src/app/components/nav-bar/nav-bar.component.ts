@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { AddDialogStudentComponent } from '../add-dialog-student/add-dialog-student.component';
 
 
 @Component({
@@ -9,4 +10,13 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class NavBarComponent {
 
+
+  constructor(private dialogRef: MatDialog){}
+
+  addStudent() {
+    this.dialogRef.open(AddDialogStudentComponent);
+  }
+
 }
+
+

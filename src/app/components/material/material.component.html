@@ -19,13 +19,16 @@
     </ng-container>
 
     <ng-container matColumnDef="acciones">
+        
         <th mat-header-cell *matHeaderCellDef appDirectivaFuente>Acciones</th>
+        
         <td mat-cell *matCellDef="let element">
             <button mat-button color="primary" (click)="abrirModal(element)">Edit</button>
             <button mat-button color="warn" (click)="remove()">Remove</button>
             <button mat-button color="primary" (click)="addStudent()">+</button>
         </td>
     </ng-container>
+    
 
     <tr mat-header-row *matHeaderRowDef="columnas"></tr>
     <tr mat-row *matRowDef="let row; columns: columnas"></tr>

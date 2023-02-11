@@ -13,6 +13,7 @@ import { MaterialModuleModule } from './material-module.module';
 import { EditarDialogComponent } from './components/editar-dialog/editar-dialog.component';
 import { FormatoNombrePipe } from './pipes/formato-nombre.pipe';
 import { DirectivaFuenteDirective } from './directives/directiva-fuente.directive';
+import { AddDialogStudentComponent } from './components/add-dialog-student/add-dialog-student.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { DirectivaFuenteDirective } from './directives/directiva-fuente.directiv
     EditarDialogComponent,
     FormatoNombrePipe,
     DirectivaFuenteDirective,
+    AddDialogStudentComponent,
 
   ],
   imports: [
@@ -33,7 +35,6 @@ import { DirectivaFuenteDirective } from './directives/directiva-fuente.directiv
     NgbModule,
     ReactiveFormsModule,
     MaterialModuleModule,
-    
   ],
   providers: [],
   bootstrap: [AppComponent]

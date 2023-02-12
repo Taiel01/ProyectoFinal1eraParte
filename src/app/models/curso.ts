@@ -1,4 +1,4 @@
 export interface Curso{
     nombre: string;
-    profesor: string;
+    abierto: boolean;
 }

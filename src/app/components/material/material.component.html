@@ -1,7 +1,8 @@
 <h4>Tabla angular material</h4>
 
 
-<table mat-table [dataSource]="dataSource"  >
+
+<table mat-table [dataSource]="dataSource">
 
     <ng-container matColumnDef="nombre">
         <th mat-header-cell *matHeaderCellDef appDirectivaFuente>Student Name</th>
@@ -34,3 +35,28 @@
     <tr mat-row *matRowDef="let row; columns: columnas"></tr>
 
 </table>
+
+<div class="row">
+    <mat-form-field>
+        <mat-label>
+            Filtrar Cursos
+        </mat-label>
+        <input type="text" matInput [(ngModel)]="filtro">
+    </mat-form-field>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col" *ngFor="let curso of cursos | filtroCursos:filtro">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>{{curso.nombre}}</mat-card-title>
+                    <mat-card-subtitle>{{curso.abierto | pipeTrueFalse }}</mat-card-subtitle>
+                </mat-card-header>
+            </mat-card>
+        </div>
+    </div>
+</div>
+
+
+

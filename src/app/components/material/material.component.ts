@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Alumno } from 'src/app/models/alumno';
+import { Curso } from 'src/app/models/curso';
 import { AddDialogStudentComponent } from '../add-dialog-student/add-dialog-student.component';
 import { EditarDialogComponent } from '../editar-dialog/editar-dialog.component';
 
@@ -12,7 +13,14 @@ import { EditarDialogComponent } from '../editar-dialog/editar-dialog.component'
   styleUrls: ['./material.component.css']
 })
 export class MaterialComponent {
+  filtro: string = "";
 
+  cursos: Curso[]=[
+    {nombre: "Angular", abierto: true},
+    {nombre: "React", abierto: false},
+    {nombre: "Vue", abierto: true},
+    {nombre: "NodeJs", abierto: true},
+  ];
 
   alumnos: Alumno[]=[
     {alumnoInfo:{nombre: "Taiel", apellido: "Perez"}, curso: "Angular", profesor: "Abner"},
@@ -22,6 +30,7 @@ export class MaterialComponent {
     {alumnoInfo:{nombre: "Mario", apellido: "Ramos"}, curso: "VueJs", profesor: "Nicolas"},
 
   ];
+
   dataSource: MatTableDataSource<Alumno> = new MatTableDataSource<Alumno>(this.alumnos);
   columnas: string[] = ["nombre", "curso", "profesor", "acciones"]
 

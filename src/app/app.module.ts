@@ -7,13 +7,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ToolBarComponent } from './components/tool-bar/tool-bar.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialComponent } from './components/material/material.component';
 import { MaterialModuleModule } from './material-module.module';
 import { EditarDialogComponent } from './components/editar-dialog/editar-dialog.component';
 import { FormatoNombrePipe } from './pipes/formato-nombre.pipe';
 import { DirectivaFuenteDirective } from './directives/directiva-fuente.directive';
 import { AddDialogStudentComponent } from './components/add-dialog-student/add-dialog-student.component';
+import { FiltroCursosPipe } from './pipes/filtro-cursos.pipe';
+import { PipeTrueFalsePipe } from './pipes/pipe-true-false.pipe';
+
 
 
 @NgModule({
@@ -26,6 +29,8 @@ import { AddDialogStudentComponent } from './components/add-dialog-student/add-d
     FormatoNombrePipe,
     DirectivaFuenteDirective,
     AddDialogStudentComponent,
+    FiltroCursosPipe,
+    PipeTrueFalsePipe,
 
   ],
   imports: [
@@ -35,6 +40,8 @@ import { AddDialogStudentComponent } from './components/add-dialog-student/add-d
     NgbModule,
     ReactiveFormsModule,
     MaterialModuleModule,
+    FormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

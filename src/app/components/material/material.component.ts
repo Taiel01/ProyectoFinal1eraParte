@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Alumno } from 'src/app/models/alumno';
@@ -6,13 +6,23 @@ import { Curso } from 'src/app/models/curso';
 import { AddDialogStudentComponent } from '../add-dialog-student/add-dialog-student.component';
 import { EditarDialogComponent } from '../editar-dialog/editar-dialog.component';
 
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ArrayAlumnosService } from 'src/app/services/array-alumnos.service';
+
 
 @Component({
   selector: 'app-material',
   templateUrl: './material.component.html',
   styleUrls: ['./material.component.css']
 })
-export class MaterialComponent {
+export class MaterialComponent implements OnInit {
+
+
+
+
+  //
+
   filtro: string = "";
 
   cursos: Curso[]=[
@@ -22,19 +32,35 @@ export class MaterialComponent {
     {nombre: "NodeJs", abierto: true},
   ];
 
-  alumnos: Alumno[]=[
-    {alumnoInfo:{nombre: "Taiel", apellido: "Perez"}, curso: "Angular", profesor: "Abner"},
-
-    {alumnoInfo:{nombre: "Juan", apellido: "Ramirez"}, curso: "React", profesor: "Adam"},
-
-    {alumnoInfo:{nombre: "Mario", apellido: "Ramos"}, curso: "VueJs", profesor: "Nicolas"},
-
-  ];
-
-  dataSource: MatTableDataSource<Alumno> = new MatTableDataSource<Alumno>(this.alumnos);
+  alumnos!: Alumno[];
+  dataSource: MatTableDataSource<Alumno>;
   columnas: string[] = ["nombre", "curso", "profesor", "acciones"]
+  formulario: any;
+   form: any;
 
-  constructor(private dialog: MatDialog){}
+  constructor(private dialog: MatDialog, private arrayAlumnosService: ArrayAlumnosService){
+
+    this.alumnos = arrayAlumnosService.obtenerAlumnos();
+    this.dataSource = new MatTableDataSource<Alumno>(this.alumnos);
+
+    
+
+    let patronRegular: string ="^[A-z]+$";
+        this.formulario = new FormGroup({
+          nombre: new FormControl("", [Validators.required, Validators.pattern(patronRegular)]),
+          apellido: new FormControl("", [Validators.required, Validators.pattern(patronRegular)]),
+          curso: new FormControl("", [Validators.required, Validators.pattern(patronRegular)]),
+          profesor: new FormControl("",[Validators.required, Validators.pattern(patronRegular)]),
+        }
+        )
+
+  }
+  ngOnInit(): void {
+    this.dataSource = new MatTableDataSource<Alumno>();
+    this.arrayAlumnosService.obtenerAlumnosPromiseObservable().subscribe((alumnos: Alumno[])=>{
+      this.dataSource.data = alumnos;
+    })
+  } 
 
   abrirModal(alumno: Alumno){ // Tiene que editar, osea que los cambios que se hagan editen el alumno
     const dialogRef = this.dialog.open(EditarDialogComponent, {
@@ -43,9 +69,12 @@ export class MaterialComponent {
   }
 
   addStudent(){
-    this.dialog.open(AddDialogStudentComponent);
+
+    //this.dialog.open(AddDialogStudentComponent);
     //tengo que hacer que el form sea la base d los datos de abajo
-    let nombre = prompt("Escribe el nombre del alumno")
+
+    
+    let nombre = this.form.get("nombre").value
     let apellido = prompt("Escribe el apellido del alumno")
     let curso = prompt("Escribe el curso del alumno")
     let profesor = prompt("Escribe el profesor del alumno")

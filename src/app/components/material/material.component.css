@@ -1,0 +1,40 @@
+.edit{
+    margin-left: 3px;
+}
+
+.inputBtn{
+    padding: 10px;
+    background-color: rgb(242, 239, 255);
+    color: rgb(32, 10, 83);
+    border: none;
+    border: 1px solid white;
+    border-radius: 4px;
+    width: 70px;
+
+}
+
+.campoInvalido{
+    color: rgb(255, 181, 181);
+    padding: 0px;
+}
+
+.campoValido{
+    color: rgb(205, 255, 165);
+    padding: 0px;
+}
+
+
+.input{
+    height: 50px;
+}
+
+.buttons{
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 13px;
+}
+
+.inputBtn:hover{
+    border: 1px solid black;
+    cursor: pointer;
+}

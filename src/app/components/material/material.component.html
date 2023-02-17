@@ -1,6 +1,48 @@
 <h4>Tabla angular material</h4>
 
 
+<div mat-dialog-content>
+    <form [formGroup]="formulario">
+            <div class="row">
+                <input class="input" type="text" placeholder="Nombre" formControlName="nombre" id="inputName">
+                <p class="campoValido" *ngIf="formulario.controls['nombre'].dirty && formulario.controls['nombre'].valid">Campo correcto</p>
+                <p class="campoInvalido" *ngIf="formulario.controls['nombre'].dirty && formulario.controls['nombre'].errors?.['pattern']">Formato incorrecto</p>
+                <p class="campoInvalido" *ngIf="formulario.controls['nombre'].dirty && formulario.controls['nombre'].errors?.['required']">Este campo no puede estar vacio</p>
+            </div>
+
+            <div class="row">
+                <input class="input" type="text" placeholder="Apellido" formControlName="apellido">
+                <p class="campoValido" *ngIf="formulario.controls['apellido'].dirty && formulario.controls['apellido'].valid">Campo correcto</p>
+                <p class="campoInvalido" *ngIf="formulario.controls['apellido'].dirty && formulario.controls['apellido'].errors?.['pattern']">Formato incorrecto</p>
+                <p class="campoInvalido" *ngIf="formulario.controls['apellido'].dirty && formulario.controls['apellido'].errors?.['required']">Este campo no puede estar vacio</p>
+            </div>
+
+            <div class="row">
+                <input class="input" type="text" placeholder="Curso" formControlName="curso">
+                <p class="campoValido" *ngIf="formulario.controls['curso'].dirty && formulario.controls['curso'].valid">Campo correcto</p>
+                <p class="campoInvalido" *ngIf="formulario.controls['curso'].dirty && formulario.controls['curso'].errors?.['pattern']">Formato incorrecto</p>
+                <p class="campoInvalido" *ngIf="formulario.controls['curso'].dirty && formulario.controls['curso'].errors?.['required']">Este campo no puede estar vacio</p>
+        
+            </div>
+
+            <div class="row">
+                <input class="input" type="text" placeholder="Profesor" formControlName="profesor">
+                <p class="campoValido" *ngIf="formulario.controls['profesor'].dirty && formulario.controls['profesor'].valid">Campo correcto</p>
+                <p class="campoInvalido" *ngIf="formulario.controls['profesor'].dirty && formulario.controls['profesor'].errors?.['pattern']">Formato incorrecto</p>
+                <p class="campoInvalido" *ngIf="formulario.controls['profesor'].dirty && formulario.controls['profesor'].errors?.['required']">Este campo no puede estar vacio</p>
+        
+            </div>
+    </form>
+
+    <div class="buttons">
+        <button class="inputBtn" type="submit" (click)="addStudent()">New student</button>
+    </div>
+
+</div>
+
+<!-- -->
+
+
 
 <table mat-table [dataSource]="dataSource">
 
@@ -26,7 +68,6 @@
         <td mat-cell *matCellDef="let element">
             <button mat-button color="primary" (click)="abrirModal(element)">Edit</button>
             <button mat-button color="warn" (click)="remove()">Remove</button>
-            <button mat-button color="primary" (click)="addStudent()">+</button>
         </td>
     </ng-container>
     

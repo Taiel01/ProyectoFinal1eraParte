@@ -16,6 +16,7 @@ import { DirectivaFuenteDirective } from './directives/directiva-fuente.directiv
 import { AddDialogStudentComponent } from './components/add-dialog-student/add-dialog-student.component';
 import { FiltroCursosPipe } from './pipes/filtro-cursos.pipe';
 import { PipeTrueFalsePipe } from './pipes/pipe-true-false.pipe';
+import { ArrayAlumnosService } from './services/array-alumnos.service';
 
 
 
@@ -43,7 +44,9 @@ import { PipeTrueFalsePipe } from './pipes/pipe-true-false.pipe';
     FormsModule,
 
   ],
-  providers: [],
+  providers: [
+    ArrayAlumnosService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

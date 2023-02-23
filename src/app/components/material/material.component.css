@@ -1,3 +1,17 @@
+.addStudentDiv{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 24px;
+}
+
+.divDelInput{
+    width: 300px;
+}
+
+.campo{
+    margin-bottom: 0;
+}
+
 .edit{
     margin-left: 3px;
 }
@@ -9,7 +23,8 @@
     border: none;
     border: 1px solid white;
     border-radius: 4px;
-    width: 70px;
+    width: 86px;
+    height: 90px;
 
 }
 
@@ -26,6 +41,7 @@
 
 .input{
     height: 50px;
+    width: 290px;
 }
 
 .buttons{
@@ -38,3 +54,5 @@
     border: 1px solid black;
     cursor: pointer;
 }
+
+

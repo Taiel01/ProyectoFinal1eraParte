@@ -15,4 +15,16 @@
 
 .layoutItem{
     padding-top: 13px;
+    cursor: pointer;
+    color: rgb(34, 34, 34);
+    text-decoration: none;
+    display: block;
+}
+
+.layoutItem:hover{
+    font-size: larger;
+}
+
+.curse{
+    padding-bottom: 10px;
 }

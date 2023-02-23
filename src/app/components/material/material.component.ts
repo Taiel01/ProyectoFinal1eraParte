@@ -52,7 +52,7 @@ export class MaterialComponent implements OnInit {
           curso: new FormControl("", [Validators.required, Validators.pattern(patronRegular)]),
           profesor: new FormControl("",[Validators.required, Validators.pattern(patronRegular)]),
         }
-        )
+        );
 
   }
   ngOnInit(): void {
@@ -62,7 +62,7 @@ export class MaterialComponent implements OnInit {
     })
   } 
 
-  abrirModal(alumno: Alumno){ // Tiene que editar, osea que los cambios que se hagan editen el alumno
+  abrirModal(alumno: Alumno){ // Tiene que editar
     const dialogRef = this.dialog.open(EditarDialogComponent, {
       data: alumno
     });
@@ -70,24 +70,20 @@ export class MaterialComponent implements OnInit {
 
   addStudent(){
 
-    //this.dialog.open(AddDialogStudentComponent);
-    //tengo que hacer que el form sea la base d los datos de abajo
+    let nombre = this.formulario.value.nombre;
+    let apellido = this.formulario.value.apellido;
+    let curso = this.formulario.value.curso;
+    let profesor = this.formulario.value.profesor;
 
-    
-    let nombre = this.form.get("nombre").value
-    let apellido = prompt("Escribe el apellido del alumno")
-    let curso = prompt("Escribe el curso del alumno")
-    let profesor = prompt("Escribe el profesor del alumno")
-
-    let array: any = {alumnoInfo:{ nombre: nombre, apellido: apellido}, curso: curso, profesor:profesor}
-    this.alumnos.push(array)
-    console.log(this.alumnos)
-    this.dataSource = new MatTableDataSource(this.alumnos)
+    let array: any = {alumnoInfo:{ nombre: nombre, apellido: apellido}, curso: curso, profesor:profesor};
+    this.alumnos.push(array);
+    this.dataSource = new MatTableDataSource(this.alumnos);
   }
-
-  remove(){ //Tiene que eliminar el correcto, quizas con algun parm
-    this.alumnos.pop()
-    console.log(this.alumnos)
-    this.dataSource = new MatTableDataSource(this.alumnos)
+  remove(element: Alumno){
+    let indice = this.alumnos.findIndex((a: Alumno) => a.alumnoInfo == element.alumnoInfo);
+    if(indice > -1){
+      this.alumnos.splice(indice, 1);
+      this.dataSource = new MatTableDataSource(this.alumnos);
+    }
+  };
   }
-}

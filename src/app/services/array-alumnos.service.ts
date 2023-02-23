@@ -38,4 +38,14 @@ export class ArrayAlumnosService {
   obtenerAlumnos(): Array<Alumno>{
     return this.alumnos
   }
+
+  editarCurso(alumno: Alumno): void{
+    let indice = this.alumnos.findIndex((a: Alumno) => a.alumnoInfo.nombre === alumno.alumnoInfo.nombre);
+
+    if(indice > -1){
+      this.alumnos[indice] = alumno;
+      //this.alumnos.next(this.alumnos);
+    }
+
+  }
 }

@@ -1,0 +1,9 @@
+.divContainer{
+    margin-top: 10px;
+}
+
+.cursoBr{
+    margin: 5px;
+    border: 2px solid rgba(0, 0, 0, 0.288);
+    border-radius: 1px;
+}

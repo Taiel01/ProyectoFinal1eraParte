@@ -17,6 +17,9 @@ import { AddDialogStudentComponent } from './components/add-dialog-student/add-d
 import { FiltroCursosPipe } from './pipes/filtro-cursos.pipe';
 import { PipeTrueFalsePipe } from './pipes/pipe-true-false.pipe';
 import { ArrayAlumnosService } from './services/array-alumnos.service';
+import { NoEncontradoComponent } from './components/no-encontrado/no-encontrado.component';
+import { InicioComponent } from './components/inicio/inicio.component';
+import { CursosHardcodeadoComponent } from './components/cursos-hardcodeado/cursos-hardcodeado.component';
 
 
 
@@ -32,6 +35,9 @@ import { ArrayAlumnosService } from './services/array-alumnos.service';
     AddDialogStudentComponent,
     FiltroCursosPipe,
     PipeTrueFalsePipe,
+    NoEncontradoComponent,
+    InicioComponent,
+    CursosHardcodeadoComponent,
 
   ],
   imports: [
